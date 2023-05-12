@@ -33,6 +33,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             localWallet({
               persist: true,
             }),
+            emailWallet,
             metamaskWallet(),
             coinbaseWallet(),
           ],
