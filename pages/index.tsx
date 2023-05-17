@@ -15,7 +15,7 @@ const Home: NextPage = () => {
       }}
     >
   
-  <ConnectWallet /> 
+  <ConnectWallet btnTitle="Login" modalTitle="Login"/> 
   </div>);
 
   return (
@@ -28,7 +28,7 @@ const Home: NextPage = () => {
         height: "75vh",
       }}
     >
-      <ConnectWallet />
+      <ConnectWallet/>
       <Web3Button
         contractAddress="0x83ff7D5f97eCF44c66066622018bC9DCa652a7f1"
         action={(contract) => contract.erc721.claim(1)}

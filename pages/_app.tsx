@@ -10,6 +10,7 @@ const activeChain = "mumbai";
 // load the API key and factory address from environment variables
 const thirdwebAPIKey = process.env.NEXT_PUBLIC_THIRDWEB_API_KEY as string;
 const factoryAddress = process.env.NEXT_PUBLIC_FACTORY_CONTRACT_ADDRESS as string;
+const gaslessURL = process.env.NEXT_PUBLIC_GASLESS_URL as string;
 const paperWalletClientId = process.env.NEXT_PUBLIC_PAPER_KEY as string;
 const emailWallet = paperWallet({
   clientId: paperWalletClientId
@@ -21,27 +22,34 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThirdwebProvider activeChain={activeChain}
     supportedWallets={[
-      metamaskWallet(),
-      coinbaseWallet(),
-      emailWallet,
-      localWallet({
-        persist: true,
-      }),
-     smartWallet({
-          factoryAddress: factoryAddress, // Address of your account factory smart contract
-          thirdwebApiKey: thirdwebAPIKey, // The API key you got from the previous step
-          gasless: true,
-          // add local wallet as option to EOA
-          personalWallets: [
-            localWallet({
-              persist: true,
-            }),
-            emailWallet,
-            metamaskWallet(),
-            coinbaseWallet(),
-          ],
-        }),
-      ]}>
+    // metamaskWallet(),
+    // coinbaseWallet(),
+       emailWallet,
+    localWallet({
+         persist: true,
+       }),
+      // smartWallet({
+      //      factoryAddress: factoryAddress, // Address of your account factory smart contract
+      //      thirdwebApiKey: thirdwebAPIKey, // The API key you got from the previous step
+      //      gasless: true,
+      //      // add local wallet as option to EOA
+      //      personalWallets: [
+      //        localWallet({
+      //          persist: true,
+      //        }),
+      //        emailWallet,
+      //        metamaskWallet(),
+      //        coinbaseWallet(),
+      //      ],
+      //    }),
+      ]}
+      sdkOptions={{
+        gasless: {
+          openzeppelin: {
+            relayerUrl: gaslessURL,
+          }
+        }
+      }}>
       <Component {...pageProps} />
     </ThirdwebProvider>
   );
