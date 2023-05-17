@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThirdwebProvider activeChain={activeChain}
     supportedWallets={[
-    // metamaskWallet(),
+    //metamaskWallet(),
     // coinbaseWallet(),
        emailWallet,
     localWallet({
