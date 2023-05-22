@@ -20,28 +20,28 @@ emailWallet.meta.iconURL = "https://cdn0.iconfinder.com/data/icons/apple-apps/10
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThirdwebProvider activeChain={activeChain}
+    <ThirdwebProvider activeChain={activeChain} 
     supportedWallets={[
-    //metamaskWallet(),
-    // coinbaseWallet(),
+    metamaskWallet(),
+    coinbaseWallet(),
        emailWallet,
     localWallet({
          persist: true,
        }),
-      // smartWallet({
-      //      factoryAddress: factoryAddress, // Address of your account factory smart contract
-      //      thirdwebApiKey: thirdwebAPIKey, // The API key you got from the previous step
-      //      gasless: true,
-      //      // add local wallet as option to EOA
-      //      personalWallets: [
-      //        localWallet({
-      //          persist: true,
-      //        }),
-      //        emailWallet,
-      //        metamaskWallet(),
-      //        coinbaseWallet(),
-      //      ],
-      //    }),
+      smartWallet({
+            factoryAddress: factoryAddress, // Address of your account factory smart contract
+            thirdwebApiKey: thirdwebAPIKey, // The API key you got from the previous step
+            gasless: true,
+            // add local wallet as option to EOA
+            personalWallets: [
+              localWallet({
+                persist: true,
+              }),
+              emailWallet,
+              metamaskWallet(),
+              coinbaseWallet(),
+            ],
+          }),
       ]}
       sdkOptions={{
         gasless: {

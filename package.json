@@ -11,8 +11,8 @@
     "deploy": "next build && next export && npx thirdweb@latest upload out"
   },
   "dependencies": {
-    "@thirdweb-dev/react": "^3.11.12-nightly-8a0dd070-20230517001327",
-    "@thirdweb-dev/sdk": "^3.10.15-nightly-8a0dd070-20230517001327",
+    "@thirdweb-dev/react": "^3.12.2",
+    "@thirdweb-dev/sdk": "^3.10.17",
     "ethers": "^5",
     "next": "^13",
     "react": "^18.2",
