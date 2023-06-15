@@ -22,12 +22,12 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThirdwebProvider activeChain={activeChain} 
     supportedWallets={[
-    metamaskWallet(),
-    coinbaseWallet(),
+   metamaskWallet(),
+   // coinbaseWallet(),
        emailWallet,
-    localWallet({
-         persist: true,
-       }),
+   localWallet({
+          persist: true,
+        }),
       smartWallet({
             factoryAddress: factoryAddress, // Address of your account factory smart contract
             thirdwebApiKey: thirdwebAPIKey, // The API key you got from the previous step
