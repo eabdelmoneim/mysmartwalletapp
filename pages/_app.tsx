@@ -13,7 +13,7 @@ const factoryAddress = process.env.NEXT_PUBLIC_FACTORY_CONTRACT_ADDRESS as strin
 const gaslessURL = process.env.NEXT_PUBLIC_GASLESS_URL as string;
 const paperWalletClientId = process.env.NEXT_PUBLIC_PAPER_KEY as string;
 const emailWallet = paperWallet({
-  clientId: paperWalletClientId
+  paperClientId: paperWalletClientId
 });
 emailWallet.meta.name = "Email Wallet";
 emailWallet.meta.iconURL = "https://cdn0.iconfinder.com/data/icons/apple-apps/100/Apple_Mail-512.png";
@@ -21,35 +21,36 @@ emailWallet.meta.iconURL = "https://cdn0.iconfinder.com/data/icons/apple-apps/10
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThirdwebProvider activeChain={activeChain} 
+    clientId={thirdwebAPIKey} 
     supportedWallets={[
-   metamaskWallet(),
-   // coinbaseWallet(),
-       emailWallet,
-   localWallet({
+    metamaskWallet(),
+    coinbaseWallet(),
+    emailWallet,
+    localWallet({
           persist: true,
-        }),
-      smartWallet({
-            factoryAddress: factoryAddress, // Address of your account factory smart contract
-            thirdwebApiKey: thirdwebAPIKey, // The API key you got from the previous step
-            gasless: true,
-            // add local wallet as option to EOA
-            personalWallets: [
-              localWallet({
-                persist: true,
-              }),
-              emailWallet,
-              metamaskWallet(),
-              coinbaseWallet(),
-            ],
-          }),
+    }),
+    // smartWallet({
+    //         factoryAddress: factoryAddress, // Address of your account factory smart contract
+    //         gasless: true,
+    //         // add local wallet as option to EOA
+    //         personalWallets: [
+    //           localWallet({
+    //             persist: true,
+    //           }),
+    //           emailWallet,
+    //           metamaskWallet(),
+    //           coinbaseWallet(),
+    //         ],
+    //       }),
       ]}
-      sdkOptions={{
-        gasless: {
-          openzeppelin: {
-            relayerUrl: gaslessURL,
-          }
-        }
-      }}>
+      // sdkOptions={{
+      //   gasless: {
+      //     openzeppelin: {
+      //       relayerUrl: gaslessURL,
+      //     }
+      //   }
+      // }}
+      >
       <Component {...pageProps} />
     </ThirdwebProvider>
   );
