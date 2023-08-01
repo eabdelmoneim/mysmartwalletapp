@@ -50,13 +50,13 @@ const Home: NextPage = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        width: "35vw",
+        width: "45vw",
         height: "75vh",
       }}
     >
       <ConnectWallet/>
       <Web3Button
-        contractAddress="0x83ff7D5f97eCF44c66066622018bC9DCa652a7f1"
+        contractAddress={process.env.NEXT_PUBLIC_OE_CONTRACT_ADDRESS as string}
         action={(contract) => contract.erc721.claim(1)}
         onSuccess={() => alert("Claimed!")}
       >
@@ -68,26 +68,13 @@ const Home: NextPage = () => {
       {<CheckoutWithCard 
       configs={{
         // Registered contract ID
-        contractId: "a8d97610-eecd-4408-820f-00d8df0dd092",
+        contractId: process.env.NEXT_PUBLIC_PAPER_CONTRACT_ID as string,
         // Buyer wallet address
         walletAddress: address,
         title: "Buy with Credit Card",
         contractArgs: {
           tokenId: 0,
         },
-        // mintMethod: {
-        //   name: "claim",
-        //   args: {
-        //     _receiver: address,
-        //     _tokenId: 0,
-        //     _quantity: "$QUANTITY",
-        //     _currency: ,
-        //   },
-        //   payment: { 
-        //     value: "0.1 * $QUANTITY",
-        //     currency: "ETH"
-        //   }
-        // }, 
       }
     }
       onPaymentSuccess={(result) => {
