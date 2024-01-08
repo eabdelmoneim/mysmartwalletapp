@@ -63,7 +63,7 @@ const Home: NextPage = () => {
         Claim OE NFT!
       </Web3Button>&nbsp;
       
-      <button className={styles.button} onClick={openModal}>Buy with Card</button>
+      {/* <button className={styles.button} onClick={openModal}>Buy with Card</button>
       <ReactModal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles}>
       {<CheckoutWithCard 
       configs={{
@@ -89,7 +89,7 @@ const Home: NextPage = () => {
         inputBorderColor: '#d4a373',
       }}
     /> }
-    </ReactModal>
+    </ReactModal> */}
 
   </div>  
   );
